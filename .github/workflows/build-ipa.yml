@@ -1,0 +1,61 @@
+name: Build IPA
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Build (unsigned)
+        run: |
+          xcodebuild \
+            -project WebViewShell.xcodeproj \
+            -scheme WebViewShell \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGN_ENTITLEMENTS="" \
+            build
+
+      - name: Package IPA
+        run: |
+          APP="build/Build/Products/Release-iphoneos/WebViewShell.app"
+          test -d "$APP" || { echo "Build product not found"; ls -R build/Build/Products; exit 1; }
+          mkdir -p Payload
+          cp -R "$APP" Payload/
+          zip -qry WebViewShell-unsigned.ipa Payload
+          echo "Size: $(du -h WebViewShell-unsigned.ipa | cut -f1)"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: WebViewShell-unsigned-ipa
+          path: WebViewShell-unsigned.ipa
+          retention-days: 30
+
+      - name: Create Release (tags only)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: WebViewShell-unsigned.ipa

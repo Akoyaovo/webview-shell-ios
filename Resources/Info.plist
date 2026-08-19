@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>WebViewShell</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+
+	<!-- 让 WKWebView 里的 Service Worker 能用（缓存静态资源、离线可用）。
+	     不加这条 = navigator.serviceWorker 压根不存在，每次冷启动全量走网络。
+	     ★ 改成你自己的域名 -->
+	<key>WKAppBoundDomains</key>
+	<array>
+		<string>example.com</string>
+	</array>
+
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
+
+	<key>UILaunchScreen</key>
+	<dict/>
+
+	<key>NSCameraUsageDescription</key>
+	<string>Allow camera access</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allow photo library access</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Save images to photo library</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Allow microphone access</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow location access</string>
+</dict>
+</plist>
