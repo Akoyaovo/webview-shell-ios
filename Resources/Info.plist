@@ -28,7 +28,7 @@
 	     ★ 改成你自己的域名 -->
 	<key>WKAppBoundDomains</key>
 	<array>
-		<string>example.com</string>
+		<string>47.82.146.22</string>
 	</array>
 
 	<key>UISupportedInterfaceOrientations</key>
