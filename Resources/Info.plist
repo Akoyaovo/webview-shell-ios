@@ -31,7 +31,10 @@
 	<true/>
 
 	<key>UILaunchScreen</key>
-	<dict/>
+	<dict>
+		<key>UIColorName</key>
+		<string>LaunchBg</string>
+	</dict>
 
 	<key>NSCameraUsageDescription</key>
 	<string>Allow camera access</string>

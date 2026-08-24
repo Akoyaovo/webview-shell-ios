@@ -39,12 +39,13 @@ final class WebViewController: UIViewController {
 
         // 全屏铺满，不让系统自动加 inset
         webView.scrollView.contentInsetAdjustmentBehavior = .never
-        webView.underPageBackgroundColor = .systemBackground
+        let shellBg = UIColor(red: 0x3d/255.0, green: 0x4a/255.0, blue: 0x4f/255.0, alpha: 1)
+        webView.underPageBackgroundColor = shellBg
         webView.isOpaque = false
         webView.backgroundColor = .clear
 
         let root = UIView()
-        root.backgroundColor = .systemBackground
+        root.backgroundColor = shellBg
         root.addSubview(webView)
 
         webView.translatesAutoresizingMaskIntoConstraints = false
