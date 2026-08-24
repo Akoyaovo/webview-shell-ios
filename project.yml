@@ -1,6 +1,6 @@
-name: WebViewShell
+name: StillNest
 options:
-  bundleIdPrefix: com.example
+  bundleIdPrefix: com.stillnest
   deploymentTarget:
     iOS: "16.0"
   createIntermediateGroups: true
@@ -19,7 +19,7 @@ settings:
     CODE_SIGN_ENTITLEMENTS: ""
 
 targets:
-  WebViewShell:
+  StillNest:
     type: application
     platform: iOS
     sources:
@@ -29,8 +29,8 @@ targets:
           - "Info.plist"
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.example.webviewshell
-        PRODUCT_NAME: WebViewShell
+        PRODUCT_BUNDLE_IDENTIFIER: com.stillnest.app
+        PRODUCT_NAME: StillNest
         INFOPLIST_FILE: Resources/Info.plist
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         GENERATE_INFOPLIST_FILE: NO
