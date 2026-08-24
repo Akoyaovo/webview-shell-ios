@@ -22,15 +22,6 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-
-	<!-- 让 WKWebView 里的 Service Worker 能用（缓存静态资源、离线可用）。
-	     不加这条 = navigator.serviceWorker 压根不存在，每次冷启动全量走网络。
-	     ★ 改成你自己的域名 -->
-	<key>WKAppBoundDomains</key>
-	<array>
-		<string>47.82.146.22</string>
-	</array>
-
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -52,5 +43,10 @@
 	<string>Allow microphone access</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Allow location access</string>
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+</dict>
 </dict>
 </plist>
