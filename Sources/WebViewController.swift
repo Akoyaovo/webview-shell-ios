@@ -17,8 +17,7 @@ final class WebViewController: UIViewController {
         config.websiteDataStore = .default()
 
         // 开 Service Worker（配合 Info.plist 的 WKAppBoundDomains）
-        config.limitsNavigationsToAppBoundDomains = true
-
+        
         config.allowsInlineMediaPlayback = true
         config.mediaTypesRequiringUserActionForPlayback = []
 
